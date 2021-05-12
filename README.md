@@ -23,7 +23,7 @@
  - server-data https://github.com/citizenfx/cfx-server-data
 
 # Instalacion
-
+```
 1.Copia el directorio en tu Disco Duro C: o en el escritorio
 2.Genera una Key para el servidor en https://keymaster.fivem.net
 3.Copia y pon tu key en el archivo server.cfg
@@ -33,7 +33,7 @@
 5. Ajusta los datos de tu base de datos
  Ejemplo : set mysql_connection_string "server=127.0.0.1;database=es_extended;userid=root;password="
 6. Ejecuta el archivo Start.bat y ya estaria todo
-
+```
 # Informacion de contacto
 
 Cualquier tipo de sugerencia para agregar a la base sera bien recibida, al igual que cualquier tipo de duda, error o fallo.
