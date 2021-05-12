@@ -49,4 +49,3 @@ I did NOT create any of these scripts, they are just some of the basic scripts n
 # Credits
 
 ESX Framework Team: https://github.com/esx-framework
-Project0 Zer0 Team: https://discord.gg/t37AM7c3ua
