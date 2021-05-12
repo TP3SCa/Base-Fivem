@@ -27,11 +27,11 @@
 1.Copia el directorio en tu Disco Duro C: o en el escritorio
 2.Genera una Key para el servidor en https://keymaster.fivem.net
 3.Copia y pon tu key en el archivo server.cfg
- Ejemplo: sv_licenseKey "tbzf7axx41lrc1hyf0at291lf0bu0xrw"
+Ejemplo: sv_licenseKey "tbzf7axx41lrc1hyf0at291lf0bu0xrw"
 4. Copia el codigo de steam y pegalo en el archivo server.cfg
- Ejemplo: set steam_webApiKey "4CDAA524F3BA6FF154CC31DE2D2"
+Ejemplo: set steam_webApiKey "4CDAA524F3BA6FF154CC31DE2D2"
 5. Ajusta los datos de tu base de datos
- Ejemplo : set mysql_connection_string "server=127.0.0.1;database=es_extended;userid=root;password="
+Ejemplo : set mysql_connection_string "server=127.0.0.1;database=es_extended;userid=root;password="
 6. Ejecuta el archivo Start.bat y ya estaria todo
 ```
 # Informacion de contacto
