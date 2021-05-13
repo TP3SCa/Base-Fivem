@@ -3,7 +3,7 @@ Config.Locale           = 'es'
 
 -- [Config.EnableCommands]
 -- Enables Commands Such As /char and /chardel
-Config.EnableCommands   = true
+Config.EnableCommands   = false
 
 -- [Config.UseSteamID]
 -- Changes the identifiers from Rockstar License To Steam. In order to use this, you will have to have
@@ -20,8 +20,8 @@ Config.UseDeferrals     = false -- EXPERIMENTAL Character Registration Method.
 
 -- These values are for the second input validation in server/main.lua
 Config.MaxNameLength    = 20
-Config.MinHeight        = 45
-Config.MaxHeight        = 96
+Config.MinHeight        = 140
+Config.MaxHeight        = 200
 Config.LowestYear       = 1900
 Config.HighestYear      = 2021
 
