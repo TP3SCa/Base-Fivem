@@ -4,6 +4,9 @@ Base ESX Start-up Server by TP3SCa
 
 I did NOT create any of these scripts, they are just some of the basic scripts needed to start an ESX Server properly. ALL Credit to the ESX Team and the people who designed and modified/fixed the code.
 
+ESX Framework Team: https://github.com/esx-framework 
+Project Zer0 Team: https://discord.gg/4aaEnV4h3K
+
 ## Supported Versions
 
 | Version | Supported          |
