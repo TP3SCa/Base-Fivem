@@ -1,5 +1,9 @@
 # Security Policy
 
+Base ESX Start-up Server by TP3SCa
+
+I did NOT create any of these scripts, they are just some of the basic scripts needed to start an ESX Server properly. ALL Credit to the ESX Team and the people who designed and modified/fixed the code.
+
 ## Supported Versions
 
 | Version | Supported          |
