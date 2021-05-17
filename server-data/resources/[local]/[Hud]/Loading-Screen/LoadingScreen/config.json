@@ -7,19 +7,19 @@
 		"useTextColour" : "false",
 		"textColour" : "0,0,0",
 		"useBoldText" : "false",
-		"serverTitle" : "Insert Server Name Here",
+		"serverTitle" : "TP3SCa",
 		"playAudioInBackground" : "true",
 		"YTVideoID" : "HPc8QMycGno",
 		"videoVolume" : "5"
 	},
 	{
-		"rule1" : "Do not RDM or VDM",
-		"rule2" : "A microphone is a requirement",
-		"rule3" : "Do not abuse/exploit bugs",
-		"rule4" : "Do not use cheats",
-		"rule5" : "No racism",
-		"rule6" : "Do not harass others",
-		"rule7" : "Use common sense"
+		"rule1" : "1",
+		"rule2" : "2",
+		"rule3" : "3",
+		"rule4" : "4",
+		"rule5" : "5",
+		"rule6" : "6",
+		"rule7" : "7"
 	},
 	{
 		"servers1" : "Website: www.asdf.com",
@@ -31,12 +31,12 @@
 		"servers7" : ""
 	},
 	{
-		"content1" : "Character Customization",
-		"content2" : "Purchasable & Storable Vehicles",
-		"content3" : "Whitelisted Police & EMT Force",
-		"content4" : "Multiple Jobs (mining, fishing, drugs, etc)",
-		"content5" : "Banks & ATMs",
-		"content6" : "Custom Vehicle Models",
-		"content7" : "Cellphone Messaging & Calling"
+		"content1" : "DEV: TP3SCa#6880",
+		"content2" : "1",
+		"content3" : "2",
+		"content4" : "3",
+		"content5" : "4",
+		"content6" : "5",
+		"content7" : "6"
 	}
 ]

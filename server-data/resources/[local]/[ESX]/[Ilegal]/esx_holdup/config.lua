@@ -35,13 +35,6 @@ Stores = {
 		secondsRemaining = 200, -- seconds
 		lastRobbed = 0
 	},
-	["bar_one"] = {
-		position = { x = 1990.57, y = 3044.95, z = 47.21 },
-		reward = math.random(5000, 35000),
-		nameOfStore = "Yellow Jack. (Sandy Shores)",
-		secondsRemaining = 300, -- seconds
-		lastRobbed = 0
-	},
 	["ocean_liquor"] = {
 		position = { x = -2959.33, y = 388.21, z = 14.00 },
 		reward = math.random(3000, 30000),

@@ -57,9 +57,6 @@ Config.Zones = {
 			vector3(-2968.2, 390.9, 14.0),
 			vector3(1166.0, 2708.9, 37.1),
 			vector3(1392.5, 3604.6,  33.9),
-			vector3(127.8,  -1284.7, 28.2), --StripClub
-			vector3(-1393.4, -606.6, 29.3), --Tequila la
-			vector3(-559.9, 287.0, 81.1) --Bahamamas
 	},
 	Size  = 1.0,
 	Type  = 59,
