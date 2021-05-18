@@ -1,0 +1,70 @@
+body {
+    background-color: transparent !important;
+    overflow: hidden;
+}
+
+.template, .notification {
+    display: none;
+}
+
+.notif-container {
+    width: 20%;
+    position: absolute;
+    right: 8%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.notification {
+    padding: 6px;
+    width: fit-content;
+    border-radius: 5px;
+    margin: 5px;
+    font: caption;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.success {
+    /* background: #0d8b56; */
+    border-left: 7px solid #17e790;
+    background-color: rgba(0, 0, 0);
+    color: #fff;
+}
+
+.inform {
+    /* background-color: rgb(38, 48, 73); */
+    border-left: 7px solid rgb(57, 111, 247);;
+    background-color: rgba(0, 0, 0);
+    color: #ffffff;
+}
+
+.error {
+    /* background: rgb(116, 37, 37); */
+    border-left: 7px solid rgb(199, 39, 39);
+    background-color: rgba(0, 0, 0);
+    color: #fff;
+}
+
+i {
+    font-size: 12px;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+/* .success {
+    background: rgba(255, 255, 255, 0.9);
+    color: rgb(0, 0, 0);
+
+}
+
+.inform {
+    background: rgba(255, 255, 255, 0.9);
+    color: rgb(0, 0, 0);
+}
+
+.error {
+    background: rgba(255, 255, 255, 0.9);
+    color: rgb(0, 0, 0);
+} */
