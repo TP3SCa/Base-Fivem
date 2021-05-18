@@ -39,6 +39,7 @@ Ejemplo : set mysql_connection_string "server=127.0.0.1;database=es_extended;use
 Cualquier tipo de sugerencia para agregar a la base sera bien recibida, al igual que cualquier tipo de duda, error o fallo.
 
 Discord: TP3SCa#6880
+Discord: 𝓐𝓵𝓵𝓮𝔁𝓒𝓖#6240
 
 # Legal & Information
 
