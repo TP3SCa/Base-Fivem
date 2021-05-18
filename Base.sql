@@ -32,9 +32,15 @@ CREATE TABLE IF NOT EXISTS `addon_account_data` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_addon_account_data_account_name_owner` (`account_name`,`owner`),
   KEY `index_addon_account_data_account_name` (`account_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `addon_account_data` DISABLE KEYS */;
+INSERT INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
+	(1, 'society_ambulance', 0, NULL),
+	(2, 'society_cardealer', 0, NULL),
+	(3, 'society_mechanic', 0, NULL),
+	(4, 'society_police', 0, NULL),
+	(5, 'property_black_money', 0, '52c9b03acdda09da2ae04368c997501876edb95d');
 /*!40000 ALTER TABLE `addon_account_data` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `addon_inventory` (
@@ -115,9 +121,14 @@ CREATE TABLE IF NOT EXISTS `datastore_data` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_datastore_data_name_owner` (`name`,`owner`),
   KEY `index_datastore_data_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `datastore_data` DISABLE KEYS */;
+INSERT INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
+	(1, 'society_ambulance', NULL, '{}'),
+	(2, 'society_mechanic', NULL, '{}'),
+	(3, 'society_police', NULL, '{}'),
+	(4, 'property', '52c9b03acdda09da2ae04368c997501876edb95d', '{}');
 /*!40000 ALTER TABLE `datastore_data` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `fine_types` (
@@ -195,15 +206,15 @@ CREATE TABLE IF NOT EXISTS `items` (
 
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
-	('bandage', 'Bandage', 2, 0, 1),
-	('blowpipe', 'Chalumeaux', 2, 0, 1),
+	('bandage', 'Benda', 2, 0, 1),
+	('blowpipe', 'Soplete', 2, 0, 1),
 	('bread', 'Pan', 1, 0, 1),
-	('carokit', 'Kit carosserie', 3, 0, 1),
-	('carotool', 'outils carosserie', 2, 0, 1),
-	('fixkit', 'Kit réparation', 3, 0, 1),
-	('fixtool', 'outils réparation', 2, 0, 1),
-	('gazbottle', 'bouteille de gaz', 2, 0, 1),
-	('medikit', 'Medikit', 2, 0, 1),
+	('carokit', 'Kit de Carroceria', 3, 0, 1),
+	('carotool', 'Herramientas de Carroceria', 2, 0, 1),
+	('fixkit', 'Kit de Reparacion', 3, 0, 1),
+	('fixtool', 'Herramientas de Reparacion', 2, 0, 1),
+	('gazbottle', 'Botella de gas', 2, 0, 1),
+	('medikit', 'Kit Medico', 2, 0, 1),
 	('water', 'Agua', 1, 0, 1);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
@@ -216,11 +227,13 @@ CREATE TABLE IF NOT EXISTS `jobs` (
 
 /*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
 INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
-	('ambulance', 'Ambulance', 0),
-	('cardealer', 'Concessionnaire', 0),
-	('mechanic', 'Mécano', 0),
-	('police', 'Policía', 0),
-	('unemployed', 'Unemployed', 0);
+	('ambulance', 'EMS', 0),
+	('cardealer', 'Concesionario', 0),
+	('garbage', 'Basurero', 0),
+	('mechanic', 'Mecanico', 0),
+	('police', 'LSPD', 0),
+	('trucker', 'Camionero', 0),
+	('unemployed', 'Desempleado', 0);
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `job_grades` (
@@ -233,29 +246,31 @@ CREATE TABLE IF NOT EXISTS `job_grades` (
   `skin_male` longtext NOT NULL,
   `skin_female` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `job_grades` DISABLE KEYS */;
 INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
-	(1, 'unemployed', 0, 'unemployed', 'Unemployed', 200, '{}', '{}'),
-	(2, 'cardealer', 0, 'recruit', 'Recrue', 10, '{}', '{}'),
-	(3, 'cardealer', 1, 'novice', 'Novice', 25, '{}', '{}'),
-	(4, 'cardealer', 2, 'experienced', 'Experimente', 40, '{}', '{}'),
-	(5, 'cardealer', 3, 'boss', 'Patron', 0, '{}', '{}'),
-	(6, 'police', 0, 'recruit', 'Recluta', 20, '{}', '{}'),
-	(7, 'police', 1, 'officer', 'Oficial', 40, '{}', '{}'),
-	(8, 'police', 2, 'sergeant', 'Sargento', 60, '{}', '{}'),
-	(9, 'police', 3, 'lieutenant', 'Teniente', 85, '{}', '{}'),
-	(10, 'police', 4, 'boss', 'Jefe', 100, '{}', '{}'),
-	(11, 'ambulance', 0, 'ambulance', 'Ambulancier', 20, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
-	(12, 'ambulance', 1, 'doctor', 'Medecin', 40, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
-	(13, 'ambulance', 2, 'chief_doctor', 'Medecin-chef', 60, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
-	(14, 'ambulance', 3, 'boss', 'Chirurgien', 80, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
-	(15, 'mechanic', 0, 'recrue', 'Recrue', 12, '{}', '{}'),
-	(16, 'mechanic', 1, 'novice', 'Novice', 24, '{}', '{}'),
-	(17, 'mechanic', 2, 'experimente', 'Experimente', 36, '{}', '{}'),
-	(18, 'mechanic', 3, 'chief', 'Chef d\'équipe', 48, '{}', '{}'),
-	(19, 'mechanic', 4, 'boss', 'Patron', 0, '{}', '{}');
+	(1, 'unemployed', 0, 'unemployed', 'Desempleado', 200, '{}', '{}'),
+	(2, 'cardealer', 0, 'recruit', 'Recluta', 10, '{}', '{}'),
+	(3, 'cardealer', 1, 'novice', 'Novato', 25, '{}', '{}'),
+	(4, 'cardealer', 2, 'experienced', 'Experimentado', 40, '{}', '{}'),
+	(5, 'cardealer', 3, 'boss', 'Jefe', 0, '{}', '{}'),
+	(6, 'police', 0, 'recruit', 'Recluta', 1000, '{}', '{}'),
+	(7, 'police', 1, 'officer', 'Oficial', 1300, '{}', '{}'),
+	(8, 'police', 2, 'sergeant', 'Sargento', 1600, '{}', '{}'),
+	(9, 'police', 3, 'lieutenant', 'Teniente', 1900, '{}', '{}'),
+	(10, 'police', 4, 'boss', 'Jefe', 2200, '{}', '{}'),
+	(11, 'ambulance', 0, 'ambulance', 'Auxiliar', 1000, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
+	(12, 'ambulance', 1, 'doctor', 'Medico', 1300, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
+	(13, 'ambulance', 2, 'chief_doctor', 'Jefe de Planta', 1600, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
+	(14, 'ambulance', 3, 'boss', 'Director', 2200, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
+	(15, 'mechanic', 0, 'recrue', 'En Practicas', 500, '{}', '{}'),
+	(16, 'mechanic', 1, 'novice', 'Novato', 800, '{}', '{}'),
+	(17, 'mechanic', 2, 'experimente', 'Mecanico', 1200, '{}', '{}'),
+	(18, 'mechanic', 3, 'chief', 'Jefe de Equipo', 1500, '{}', '{}'),
+	(19, 'mechanic', 4, 'boss', 'Dueño', 1800, '{}', '{}'),
+	(20, 'garbage', 0, 'employee', 'Basurero', 750, '{"tshirt_1":59,"torso_1":89,"arms":31,"pants_1":36,"glasses_1":19,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":2,"glasses_2":0,"torso_2":1,"shoes":35,"hair_1":0,"skin":0,"sex":0,"glasses_1":19,"pants_2":0,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":5}', '{"tshirt_1":36,"torso_1":0,"arms":68,"pants_1":30,"glasses_1":15,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":27,"glasses_2":0,"torso_2":11,"shoes":26,"hair_1":5,"skin":0,"sex":1,"glasses_1":15,"pants_2":2,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":19}'),
+	(21, 'trucker', 0, 'employee', 'Camionero', 750, '{"tshirt_1":59,"torso_1":89,"arms":31,"pants_1":36,"glasses_1":19,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":2,"glasses_2":0,"torso_2":1,"shoes":35,"hair_1":0,"skin":0,"sex":0,"glasses_1":19,"pants_2":0,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":5}', '{"tshirt_1":36,"torso_1":0,"arms":68,"pants_1":30,"glasses_1":15,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":27,"glasses_2":0,"torso_2":11,"shoes":26,"hair_1":5,"skin":0,"sex":1,"glasses_1":15,"pants_2":2,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":19}');
 /*!40000 ALTER TABLE `job_grades` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `licenses` (
@@ -291,6 +306,8 @@ CREATE TABLE IF NOT EXISTS `owned_vehicles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `owned_vehicles` DISABLE KEYS */;
+INSERT INTO `owned_vehicles` (`owner`, `plate`, `vehicle`, `type`, `job`, `stored`, `garage`) VALUES
+	('52c9b03acdda09da2ae04368c997501876edb95d', 'STN 782', '{"modHood":-1,"modSeats":-1,"color2":0,"modDoorSpeaker":-1,"modFrame":-1,"wheelColor":156,"bodyHealth":1000.0,"windows":[1,false,false,false,false,false,false,false,false,false,false,false,false],"modOrnaments":-1,"modDashboard":-1,"modPlateHolder":-1,"modBrakes":-1,"color1":6,"tankHealth":1000.0,"modFrontBumper":-1,"model":-344943009,"modLivery":-1,"modSuspension":-1,"modTransmission":-1,"plateIndex":0,"modGrille":-1,"modTrimA":-1,"modArchCover":-1,"dirtLevel":10.2,"modXenon":false,"modEngine":-1,"windowTint":-1,"extras":{"10":true,"12":false},"modFender":-1,"modArmor":-1,"modRoof":-1,"modDial":-1,"modSmokeEnabled":false,"plate":"STN 782","xenonColor":255,"modAPlate":-1,"modFrontWheels":-1,"modTurbo":false,"modSteeringWheel":-1,"neonColor":[255,0,255],"modRearBumper":-1,"modBackWheels":-1,"modRightFender":-1,"doors":[false,false,false,false,false,false],"modStruts":-1,"neonEnabled":[false,false,false,false],"modEngineBlock":-1,"modSpeakers":-1,"modVanityPlate":-1,"modShifterLeavers":-1,"modHorns":-1,"modExhaust":-1,"modTank":-1,"modAerials":-1,"modSideSkirt":-1,"modTrimB":-1,"modHydrolic":-1,"modTrunk":-1,"modAirFilter":-1,"tyres":[false,false,false,false,false,false,false],"pearlescentColor":111,"tyreSmokeColor":[255,255,255],"modWindows":-1,"modSpoilers":-1,"wheels":0,"engineHealth":1000.0,"fuelLevel":30.54000282287597}', 'car', NULL, 0, 'Central');
 /*!40000 ALTER TABLE `owned_vehicles` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `phone_app_chat` (
@@ -498,7 +515,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `job` varchar(20) DEFAULT 'unemployed',
   `job_grade` int(11) DEFAULT 0,
   `loadout` longtext DEFAULT NULL,
-  `position` varchar(255) DEFAULT '{"x":-269.4,"y":-955.3,"z":31.2,"heading":205.8}',
+  `position` varchar(255) DEFAULT '{"z":31.2,"heading":205.8,"x":-269.4,"y":-955.3}',
   `skin` longtext DEFAULT NULL,
   `status` longtext DEFAULT NULL,
   `firstname` varchar(16) DEFAULT NULL,
@@ -513,6 +530,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`identifier`, `accounts`, `group`, `inventory`, `job`, `job_grade`, `loadout`, `position`, `skin`, `status`, `firstname`, `lastname`, `dateofbirth`, `sex`, `height`, `phone_number`, `is_dead`, `last_property`) VALUES
+	('52c9b03acdda09da2ae04368c997501876edb95d', '{"money":9992000,"bank":5950,"black_money":0}', 'superadmin', '[]', 'ambulance', 3, '[]', '{"z":29.3,"heading":173.6,"x":144.8,"y":-1122.1}', '{"eyebrows_4":0,"jaw_1":0,"nose_5":0,"chest_2":0,"hair_1":0,"skin_md_weight":50,"bracelets_2":0,"age_2":0,"face_md_weight":50,"bodyb_2":0,"bags_2":0,"blemishes_2":0,"complexion_2":0,"arms_2":0,"eyebrows_3":0,"sun_1":0,"bags_1":0,"eyebrows_5":0,"watches_1":-1,"chest_1":0,"hair_color_1":0,"beard_2":0,"blemishes_1":0,"nose_1":0,"jaw_2":0,"eyebrows_6":0,"glasses_2":0,"nose_4":0,"bodyb_4":0,"hair_color_2":0,"eyebrows_2":0,"helmet_1":-1,"helmet_2":0,"lipstick_3":0,"arms":0,"nose_3":0,"sex":0,"ears_2":0,"makeup_1":0,"nose_2":0,"chin_2":0,"torso_1":0,"shoes_1":0,"eyebrows_1":0,"bodyb_3":-1,"lip_thickness":0,"makeup_2":0,"moles_2":0,"nose_6":0,"beard_3":0,"age_1":0,"bproof_1":0,"chin_1":0,"decals_1":0,"blush_1":0,"torso_2":0,"moles_1":0,"cheeks_2":0,"ears_1":-1,"cheeks_3":0,"dad":0,"makeup_4":0,"chain_2":0,"lipstick_4":0,"lipstick_2":0,"blush_2":0,"makeup_3":0,"eye_squint":0,"bproof_2":0,"sun_2":0,"mom":21,"cheeks_1":0,"pants_2":0,"tshirt_1":0,"bodyb_1":-1,"chin_4":0,"pants_1":0,"complexion_1":0,"decals_2":0,"eye_color":0,"tshirt_2":0,"lipstick_1":0,"bracelets_1":-1,"mask_2":0,"chain_1":0,"chest_3":0,"watches_2":0,"neck_thickness":0,"hair_2":0,"glasses_1":0,"mask_1":0,"beard_4":0,"blush_3":0,"beard_1":0,"shoes_2":0,"chin_3":0}', '[{"name":"hunger","percent":85.89,"val":858900},{"name":"thirst","percent":89.4175,"val":894175},{"name":"drunk","percent":0.0,"val":0},{"name":"drug","percent":0.0,"val":0}]', 'Lee', 'Tao', '02/09/1994', 'm', 180, '65779', 0, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `user_licenses` (
