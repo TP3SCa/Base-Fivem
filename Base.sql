@@ -110,7 +110,11 @@ INSERT INTO `datastore` (`name`, `label`, `shared`) VALUES
 	('property', 'Propriété', 0),
 	('society_ambulance', 'Ambulance', 1),
 	('society_mechanic', 'Mécano', 1),
-	('society_police', 'Policía', 1);
+	('society_police', 'Policía', 1),
+	('user_ears', 'Accesorio de oreja', 0),
+	('user_glasses', 'Gafas', 0),
+	('user_helmet', 'Casco', 0),
+	('user_mask', 'Máscara', 0);
 /*!40000 ALTER TABLE `datastore` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `datastore_data` (
@@ -121,14 +125,18 @@ CREATE TABLE IF NOT EXISTS `datastore_data` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_datastore_data_name_owner` (`name`,`owner`),
   KEY `index_datastore_data_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `datastore_data` DISABLE KEYS */;
 INSERT INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
 	(1, 'society_ambulance', NULL, '{}'),
 	(2, 'society_mechanic', NULL, '{}'),
 	(3, 'society_police', NULL, '{}'),
-	(4, 'property', '52c9b03acdda09da2ae04368c997501876edb95d', '{}');
+	(4, 'property', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
+	(5, 'user_glasses', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
+	(6, 'user_helmet', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
+	(7, 'user_ears', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
+	(8, 'user_mask', '52c9b03acdda09da2ae04368c997501876edb95d', '{}');
 /*!40000 ALTER TABLE `datastore_data` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `fine_types` (
@@ -206,16 +214,54 @@ CREATE TABLE IF NOT EXISTS `items` (
 
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
-	('bandage', 'Benda', 2, 0, 1),
-	('blowpipe', 'Soplete', 2, 0, 1),
-	('bread', 'Pan', 1, 0, 1),
-	('carokit', 'Kit de Carroceria', 3, 0, 1),
-	('carotool', 'Herramientas de Carroceria', 2, 0, 1),
-	('fixkit', 'Kit de Reparacion', 3, 0, 1),
-	('fixtool', 'Herramientas de Reparacion', 2, 0, 1),
-	('gazbottle', 'Botella de gas', 2, 0, 1),
-	('medikit', 'Kit Medico', 2, 0, 1),
-	('water', 'Agua', 1, 0, 1);
+	('bandage', 'Benda', 1, 0, 1),
+	('beer', 'Cerveza', 1, 0, 1),
+	('blowpipe', 'Soplete', 1, 0, 1),
+	('bolcacahuetes', 'Cacahuetes', 1, 0, 1),
+	('bread', 'Hamburguesa', 1, 0, 1),
+	('carokit', 'Kit de carroceria', 1, 0, 1),
+	('carotool', 'Herramientas de carroceria', 1, 0, 1),
+	('chips', 'Patatas', 1, 0, 1),
+	('coke', 'Cocaina', 1, 0, 1),
+	('coke_seed', 'Semilla de Coca', 1, 0, 1),
+	('drpepper', 'Dr. Pepper', 1, 0, 1),
+	('energy', 'Bebida Energetica', 1, 0, 1),
+	('fish', 'Pescado', 1, 0, 1),
+	('fixkit', 'Kit de reparacion', 1, 0, 1),
+	('fixtool', 'Herramientas de reparacion', 1, 0, 1),
+	('gazbottle', 'Botella de gas', 1, 0, 1),
+	('grapperaisin', 'Racimo de Uvas', 1, 0, 1),
+	('icetea', 'Te Helado', 1, 0, 1),
+	('jager', 'Jägermeister', 1, 0, 1),
+	('jagerbomb', 'Jägerbomb', 1, 0, 1),
+	('jagercerbere', 'Jäger Cerveza', 1, 0, 1),
+	('jusfruit', 'Zumo de frutas', 1, 0, 1),
+	('lait', 'Leche', 1, 0, 1),
+	('limonade', 'Limonada', 1, 0, 1),
+	('martini', 'Martini Blanco', 1, 0, 1),
+	('medikit', 'Kit Medico', 1, 0, 1),
+	('metreshooter', 'Chupito', 1, 0, 1),
+	('mixapero', 'Aperitivos', 1, 0, 1),
+	('mojito', 'Mojito', 1, 0, 1),
+	('opium', 'Opio', 1, 0, 1),
+	('opium_seed', 'Semilla de Opio', 1, 0, 1),
+	('paincomplet', 'Pan', 1, 0, 1),
+	('phone', 'Telefono', 1, 0, 1),
+	('pistache', 'Pistachos', 1, 0, 1),
+	('rhum', 'Ron', 1, 0, 1),
+	('rhumcoca', 'Ron-cola', 1, 0, 1),
+	('rhumfruit', 'Ron-zumo', 1, 0, 1),
+	('soda', 'Gaseosa', 1, 0, 1),
+	('tequila', 'Tequila', 1, 0, 1),
+	('vodka', 'Vodka', 1, 0, 1),
+	('vodkaenergy', 'Vodka-energy', 1, 0, 1),
+	('vodkafruit', 'Vodka-zumo', 1, 0, 1),
+	('water', 'Agua', 1, 0, 1),
+	('weed_pooch', 'Marihuana', 1, 0, 1),
+	('weed_seed', 'Semilla de marihuana', 1, 0, 1),
+	('whisky', 'Whisky', 1, 0, 1),
+	('whiskycoca', 'Whisky-cola', 1, 0, 1),
+	('xanax', 'Xanax', 1, 0, 1);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `jobs` (
@@ -526,13 +572,33 @@ CREATE TABLE IF NOT EXISTS `users` (
   `phone_number` varchar(10) DEFAULT NULL,
   `is_dead` tinyint(1) DEFAULT 0,
   `last_property` varchar(255) DEFAULT NULL,
+  `tattoos` longtext DEFAULT NULL,
   PRIMARY KEY (`identifier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`identifier`, `accounts`, `group`, `inventory`, `job`, `job_grade`, `loadout`, `position`, `skin`, `status`, `firstname`, `lastname`, `dateofbirth`, `sex`, `height`, `phone_number`, `is_dead`, `last_property`) VALUES
-	('52c9b03acdda09da2ae04368c997501876edb95d', '{"money":9992000,"bank":5950,"black_money":0}', 'superadmin', '[]', 'ambulance', 3, '[]', '{"z":29.3,"heading":173.6,"x":144.8,"y":-1122.1}', '{"eyebrows_4":0,"jaw_1":0,"nose_5":0,"chest_2":0,"hair_1":0,"skin_md_weight":50,"bracelets_2":0,"age_2":0,"face_md_weight":50,"bodyb_2":0,"bags_2":0,"blemishes_2":0,"complexion_2":0,"arms_2":0,"eyebrows_3":0,"sun_1":0,"bags_1":0,"eyebrows_5":0,"watches_1":-1,"chest_1":0,"hair_color_1":0,"beard_2":0,"blemishes_1":0,"nose_1":0,"jaw_2":0,"eyebrows_6":0,"glasses_2":0,"nose_4":0,"bodyb_4":0,"hair_color_2":0,"eyebrows_2":0,"helmet_1":-1,"helmet_2":0,"lipstick_3":0,"arms":0,"nose_3":0,"sex":0,"ears_2":0,"makeup_1":0,"nose_2":0,"chin_2":0,"torso_1":0,"shoes_1":0,"eyebrows_1":0,"bodyb_3":-1,"lip_thickness":0,"makeup_2":0,"moles_2":0,"nose_6":0,"beard_3":0,"age_1":0,"bproof_1":0,"chin_1":0,"decals_1":0,"blush_1":0,"torso_2":0,"moles_1":0,"cheeks_2":0,"ears_1":-1,"cheeks_3":0,"dad":0,"makeup_4":0,"chain_2":0,"lipstick_4":0,"lipstick_2":0,"blush_2":0,"makeup_3":0,"eye_squint":0,"bproof_2":0,"sun_2":0,"mom":21,"cheeks_1":0,"pants_2":0,"tshirt_1":0,"bodyb_1":-1,"chin_4":0,"pants_1":0,"complexion_1":0,"decals_2":0,"eye_color":0,"tshirt_2":0,"lipstick_1":0,"bracelets_1":-1,"mask_2":0,"chain_1":0,"chest_3":0,"watches_2":0,"neck_thickness":0,"hair_2":0,"glasses_1":0,"mask_1":0,"beard_4":0,"blush_3":0,"beard_1":0,"shoes_2":0,"chin_3":0}', '[{"name":"hunger","percent":85.89,"val":858900},{"name":"thirst","percent":89.4175,"val":894175},{"name":"drunk","percent":0.0,"val":0},{"name":"drug","percent":0.0,"val":0}]', 'Lee', 'Tao', '02/09/1994', 'm', 180, '65779', 0, NULL);
+INSERT INTO `users` (`identifier`, `accounts`, `group`, `inventory`, `job`, `job_grade`, `loadout`, `position`, `skin`, `status`, `firstname`, `lastname`, `dateofbirth`, `sex`, `height`, `phone_number`, `is_dead`, `last_property`, `tattoos`) VALUES
+	('52c9b03acdda09da2ae04368c997501876edb95d', '{"money":9992000,"bank":5950,"black_money":0}', 'superadmin', '[]', 'ambulance', 3, '[]', '{"heading":59.8,"z":29.3,"y":-1119.8,"x":146.8}', '{"eyebrows_4":0,"jaw_1":0,"nose_5":0,"chest_2":0,"hair_1":0,"skin_md_weight":50,"bracelets_2":0,"age_2":0,"face_md_weight":50,"bodyb_2":0,"bags_2":0,"blemishes_2":0,"complexion_2":0,"arms_2":0,"eyebrows_3":0,"sun_1":0,"bags_1":0,"eyebrows_5":0,"watches_1":-1,"chest_1":0,"hair_color_1":0,"beard_2":0,"blemishes_1":0,"nose_1":0,"jaw_2":0,"eyebrows_6":0,"glasses_2":0,"nose_4":0,"bodyb_4":0,"hair_color_2":0,"eyebrows_2":0,"helmet_1":-1,"helmet_2":0,"lipstick_3":0,"arms":0,"nose_3":0,"sex":0,"ears_2":0,"makeup_1":0,"nose_2":0,"chin_2":0,"torso_1":0,"shoes_1":0,"eyebrows_1":0,"bodyb_3":-1,"lip_thickness":0,"makeup_2":0,"moles_2":0,"nose_6":0,"beard_3":0,"age_1":0,"bproof_1":0,"chin_1":0,"decals_1":0,"blush_1":0,"torso_2":0,"moles_1":0,"cheeks_2":0,"ears_1":-1,"cheeks_3":0,"dad":0,"makeup_4":0,"chain_2":0,"lipstick_4":0,"lipstick_2":0,"blush_2":0,"makeup_3":0,"eye_squint":0,"bproof_2":0,"sun_2":0,"mom":21,"cheeks_1":0,"pants_2":0,"tshirt_1":0,"bodyb_1":-1,"chin_4":0,"pants_1":0,"complexion_1":0,"decals_2":0,"eye_color":0,"tshirt_2":0,"lipstick_1":0,"bracelets_1":-1,"mask_2":0,"chain_1":0,"chest_3":0,"watches_2":0,"neck_thickness":0,"hair_2":0,"glasses_1":0,"mask_1":0,"beard_4":0,"blush_3":0,"beard_1":0,"shoes_2":0,"chin_3":0}', '[{"val":810500,"percent":81.05,"name":"hunger"},{"val":857875,"percent":85.78750000000001,"name":"thirst"}]', 'Lee', 'Tao', '02/09/1994', 'm', 180, '65779', 0, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `user_identifiers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `license` varchar(255) DEFAULT NULL,
+  `xbl` varchar(255) DEFAULT NULL,
+  `live` varchar(255) DEFAULT NULL,
+  `discord` varchar(255) DEFAULT NULL,
+  `fivem` varchar(255) DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+/*!40000 ALTER TABLE `user_identifiers` DISABLE KEYS */;
+INSERT INTO `user_identifiers` (`id`, `identifier`, `name`, `license`, `xbl`, `live`, `discord`, `fivem`, `ip`, `date`) VALUES
+	(1, 'steam:11000013399608d', 'TP3SCa', 'license:52c9b03acdda09da2ae04368c997501876edb95d', 'xbl:2535454057008871', 'live:1055518924728225', 'discord:401493205398454273', NULL, 'ip:192.168.1.10', '2021-05-19 13:17:37');
+/*!40000 ALTER TABLE `user_identifiers` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `user_licenses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
