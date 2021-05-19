@@ -32,12 +32,12 @@ Config.BlackoutTime = 4000
 -- Enable blacking out due to vehicle damage
 -- If a vehicle suffers an impact greater than the specified value, the player blacks out
 Config.BlackoutFromDamage = true
-Config.BlackoutDamageRequired = 46
+Config.BlackoutDamageRequired = 30
 
 -- Enable blacking out due to speed deceleration
 -- If a vehicle slows down rapidly over this threshold, the player blacks out
 Config.BlackoutFromSpeed = true
-Config.BlackoutSpeedRequired = 70 -- Speed in KPH
+Config.BlackoutSpeedRequired = 60 -- Speed in KPH
 
 -- Enable the disabling of controls if the player is blacked out
 Config.DisableControlsOnBlackout = false

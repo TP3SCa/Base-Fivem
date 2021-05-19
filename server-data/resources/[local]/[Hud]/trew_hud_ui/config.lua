@@ -49,7 +49,7 @@ Config.ui = {
 
 	showWalletMoney 	= true,
 	showBankMoney 		= true,
-	showBlackMoney 		= false,
+	showBlackMoney 		= true,
 	showSocietyMoney	= true,
 
 	showDate 			= false,

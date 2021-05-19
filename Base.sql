@@ -219,6 +219,7 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('blowpipe', 'Soplete', 1, 0, 1),
 	('bolcacahuetes', 'Cacahuetes', 1, 0, 1),
 	('bread', 'Hamburguesa', 1, 0, 1),
+	('cannabis', 'Canabis', 3, 0, 1),
 	('carokit', 'Kit de carroceria', 1, 0, 1),
 	('carotool', 'Herramientas de carroceria', 1, 0, 1),
 	('chips', 'Patatas', 1, 0, 1),
@@ -235,9 +236,11 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('jager', 'Jägermeister', 1, 0, 1),
 	('jagerbomb', 'Jägerbomb', 1, 0, 1),
 	('jagercerbere', 'Jäger Cerveza', 1, 0, 1),
+	('jewels', 'Joyas', 1, 0, 1),
 	('jusfruit', 'Zumo de frutas', 1, 0, 1),
 	('lait', 'Leche', 1, 0, 1),
 	('limonade', 'Limonada', 1, 0, 1),
+	('marijuana', 'Marihuana', 2, 0, 1),
 	('martini', 'Martini Blanco', 1, 0, 1),
 	('medikit', 'Kit Medico', 1, 0, 1),
 	('metreshooter', 'Chupito', 1, 0, 1),
@@ -257,8 +260,6 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('vodkaenergy', 'Vodka-energy', 1, 0, 1),
 	('vodkafruit', 'Vodka-zumo', 1, 0, 1),
 	('water', 'Agua', 1, 0, 1),
-	('weed_pooch', 'Marihuana', 1, 0, 1),
-	('weed_seed', 'Semilla de marihuana', 1, 0, 1),
 	('whisky', 'Whisky', 1, 0, 1),
 	('whiskycoca', 'Whisky-cola', 1, 0, 1),
 	('xanax', 'Xanax', 1, 0, 1);
@@ -274,12 +275,15 @@ CREATE TABLE IF NOT EXISTS `jobs` (
 /*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
 INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 	('ambulance', 'EMS', 0),
+	('bahamas', 'Bahamas', 0),
 	('cardealer', 'Concesionario', 0),
+	('cockatoos', 'Cockatoos', 0),
 	('garbage', 'Basurero', 0),
 	('mechanic', 'Mecanico', 0),
 	('police', 'LSPD', 0),
 	('trucker', 'Camionero', 0),
-	('unemployed', 'Desempleado', 0);
+	('unemployed', 'Desempleado', 0),
+	('vanilla', 'Vanilla', 0);
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `job_grades` (
@@ -292,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `job_grades` (
   `skin_male` longtext NOT NULL,
   `skin_female` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `job_grades` DISABLE KEYS */;
 INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
@@ -316,7 +320,19 @@ INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, 
 	(18, 'mechanic', 3, 'chief', 'Jefe de Equipo', 1500, '{}', '{}'),
 	(19, 'mechanic', 4, 'boss', 'Dueño', 1800, '{}', '{}'),
 	(20, 'garbage', 0, 'employee', 'Basurero', 750, '{"tshirt_1":59,"torso_1":89,"arms":31,"pants_1":36,"glasses_1":19,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":2,"glasses_2":0,"torso_2":1,"shoes":35,"hair_1":0,"skin":0,"sex":0,"glasses_1":19,"pants_2":0,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":5}', '{"tshirt_1":36,"torso_1":0,"arms":68,"pants_1":30,"glasses_1":15,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":27,"glasses_2":0,"torso_2":11,"shoes":26,"hair_1":5,"skin":0,"sex":1,"glasses_1":15,"pants_2":2,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":19}'),
-	(21, 'trucker', 0, 'employee', 'Camionero', 750, '{"tshirt_1":59,"torso_1":89,"arms":31,"pants_1":36,"glasses_1":19,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":2,"glasses_2":0,"torso_2":1,"shoes":35,"hair_1":0,"skin":0,"sex":0,"glasses_1":19,"pants_2":0,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":5}', '{"tshirt_1":36,"torso_1":0,"arms":68,"pants_1":30,"glasses_1":15,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":27,"glasses_2":0,"torso_2":11,"shoes":26,"hair_1":5,"skin":0,"sex":1,"glasses_1":15,"pants_2":2,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":19}');
+	(21, 'trucker', 0, 'employee', 'Camionero', 750, '{"tshirt_1":59,"torso_1":89,"arms":31,"pants_1":36,"glasses_1":19,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":2,"glasses_2":0,"torso_2":1,"shoes":35,"hair_1":0,"skin":0,"sex":0,"glasses_1":19,"pants_2":0,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":5}', '{"tshirt_1":36,"torso_1":0,"arms":68,"pants_1":30,"glasses_1":15,"decals_2":0,"hair_color_2":0,"helmet_2":0,"hair_color_1":0,"face":27,"glasses_2":0,"torso_2":11,"shoes":26,"hair_1":5,"skin":0,"sex":1,"glasses_1":15,"pants_2":2,"hair_2":0,"decals_1":0,"tshirt_2":0,"helmet_1":19}'),
+	(22, 'cockatoos', 1, 'camarero', 'Camarero', 700, '{}', '{}'),
+	(23, 'cockatoos', 2, 'barman', 'Barman', 1000, '{}', '{}'),
+	(24, 'cockatoos', 3, 'seguridad', 'Seguridad', 1300, '{}', '{}'),
+	(25, 'cockatoos', 4, 'jefe', 'Dueño', 2000, '{}', '{}'),
+	(26, 'bahamas', 1, 'camarero', 'Camarero', 700, '{}', '{}'),
+	(27, 'bahamas', 2, 'barman', 'Barman', 1000, '{}', '{}'),
+	(28, 'bahamas', 3, 'seguridad', 'Seguridad', 1300, '{}', '{}'),
+	(29, 'bahamas', 4, 'jefe', 'Dueño', 2000, '{}', '{}'),
+	(30, 'vanilla', 1, 'camarero', 'Camarero', 700, '{}', '{}'),
+	(31, 'vanilla', 2, 'bailarin', 'Bailarin/a', 1000, '{}', '{}'),
+	(32, 'vanilla', 3, 'seguridad', 'Seguridad', 1300, '{}', '{}'),
+	(33, 'vanilla', 4, 'jefe', 'Dueño', 2000, '{}', '{}');
 /*!40000 ALTER TABLE `job_grades` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `licenses` (
@@ -326,6 +342,8 @@ CREATE TABLE IF NOT EXISTS `licenses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `licenses` DISABLE KEYS */;
+INSERT INTO `licenses` (`type`, `label`) VALUES
+	('weed_processing', 'Weed Processing License');
 /*!40000 ALTER TABLE `licenses` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `owned_properties` (
@@ -352,8 +370,6 @@ CREATE TABLE IF NOT EXISTS `owned_vehicles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `owned_vehicles` DISABLE KEYS */;
-INSERT INTO `owned_vehicles` (`owner`, `plate`, `vehicle`, `type`, `job`, `stored`, `garage`) VALUES
-	('52c9b03acdda09da2ae04368c997501876edb95d', 'STN 782', '{"modHood":-1,"modSeats":-1,"color2":0,"modDoorSpeaker":-1,"modFrame":-1,"wheelColor":156,"bodyHealth":1000.0,"windows":[1,false,false,false,false,false,false,false,false,false,false,false,false],"modOrnaments":-1,"modDashboard":-1,"modPlateHolder":-1,"modBrakes":-1,"color1":6,"tankHealth":1000.0,"modFrontBumper":-1,"model":-344943009,"modLivery":-1,"modSuspension":-1,"modTransmission":-1,"plateIndex":0,"modGrille":-1,"modTrimA":-1,"modArchCover":-1,"dirtLevel":10.2,"modXenon":false,"modEngine":-1,"windowTint":-1,"extras":{"10":true,"12":false},"modFender":-1,"modArmor":-1,"modRoof":-1,"modDial":-1,"modSmokeEnabled":false,"plate":"STN 782","xenonColor":255,"modAPlate":-1,"modFrontWheels":-1,"modTurbo":false,"modSteeringWheel":-1,"neonColor":[255,0,255],"modRearBumper":-1,"modBackWheels":-1,"modRightFender":-1,"doors":[false,false,false,false,false,false],"modStruts":-1,"neonEnabled":[false,false,false,false],"modEngineBlock":-1,"modSpeakers":-1,"modVanityPlate":-1,"modShifterLeavers":-1,"modHorns":-1,"modExhaust":-1,"modTank":-1,"modAerials":-1,"modSideSkirt":-1,"modTrimB":-1,"modHydrolic":-1,"modTrunk":-1,"modAirFilter":-1,"tyres":[false,false,false,false,false,false,false],"pearlescentColor":111,"tyreSmokeColor":[255,255,255],"modWindows":-1,"modSpoilers":-1,"wheels":0,"engineHealth":1000.0,"fuelLevel":30.54000282287597}', 'car', NULL, 0, 'Central');
 /*!40000 ALTER TABLE `owned_vehicles` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `phone_app_chat` (
@@ -577,8 +593,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`identifier`, `accounts`, `group`, `inventory`, `job`, `job_grade`, `loadout`, `position`, `skin`, `status`, `firstname`, `lastname`, `dateofbirth`, `sex`, `height`, `phone_number`, `is_dead`, `last_property`, `tattoos`) VALUES
-	('52c9b03acdda09da2ae04368c997501876edb95d', '{"money":9992000,"bank":5950,"black_money":0}', 'superadmin', '[]', 'ambulance', 3, '[]', '{"heading":59.8,"z":29.3,"y":-1119.8,"x":146.8}', '{"eyebrows_4":0,"jaw_1":0,"nose_5":0,"chest_2":0,"hair_1":0,"skin_md_weight":50,"bracelets_2":0,"age_2":0,"face_md_weight":50,"bodyb_2":0,"bags_2":0,"blemishes_2":0,"complexion_2":0,"arms_2":0,"eyebrows_3":0,"sun_1":0,"bags_1":0,"eyebrows_5":0,"watches_1":-1,"chest_1":0,"hair_color_1":0,"beard_2":0,"blemishes_1":0,"nose_1":0,"jaw_2":0,"eyebrows_6":0,"glasses_2":0,"nose_4":0,"bodyb_4":0,"hair_color_2":0,"eyebrows_2":0,"helmet_1":-1,"helmet_2":0,"lipstick_3":0,"arms":0,"nose_3":0,"sex":0,"ears_2":0,"makeup_1":0,"nose_2":0,"chin_2":0,"torso_1":0,"shoes_1":0,"eyebrows_1":0,"bodyb_3":-1,"lip_thickness":0,"makeup_2":0,"moles_2":0,"nose_6":0,"beard_3":0,"age_1":0,"bproof_1":0,"chin_1":0,"decals_1":0,"blush_1":0,"torso_2":0,"moles_1":0,"cheeks_2":0,"ears_1":-1,"cheeks_3":0,"dad":0,"makeup_4":0,"chain_2":0,"lipstick_4":0,"lipstick_2":0,"blush_2":0,"makeup_3":0,"eye_squint":0,"bproof_2":0,"sun_2":0,"mom":21,"cheeks_1":0,"pants_2":0,"tshirt_1":0,"bodyb_1":-1,"chin_4":0,"pants_1":0,"complexion_1":0,"decals_2":0,"eye_color":0,"tshirt_2":0,"lipstick_1":0,"bracelets_1":-1,"mask_2":0,"chain_1":0,"chest_3":0,"watches_2":0,"neck_thickness":0,"hair_2":0,"glasses_1":0,"mask_1":0,"beard_4":0,"blush_3":0,"beard_1":0,"shoes_2":0,"chin_3":0}', '[{"val":810500,"percent":81.05,"name":"hunger"},{"val":857875,"percent":85.78750000000001,"name":"thirst"}]', 'Lee', 'Tao', '02/09/1994', 'm', 180, '65779', 0, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `user_identifiers` (
@@ -596,8 +610,6 @@ CREATE TABLE IF NOT EXISTS `user_identifiers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `user_identifiers` DISABLE KEYS */;
-INSERT INTO `user_identifiers` (`id`, `identifier`, `name`, `license`, `xbl`, `live`, `discord`, `fivem`, `ip`, `date`) VALUES
-	(1, 'steam:11000013399608d', 'TP3SCa', 'license:52c9b03acdda09da2ae04368c997501876edb95d', 'xbl:2535454057008871', 'live:1055518924728225', 'discord:401493205398454273', NULL, 'ip:192.168.1.10', '2021-05-19 13:17:37');
 /*!40000 ALTER TABLE `user_identifiers` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `user_licenses` (
