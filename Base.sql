@@ -39,8 +39,7 @@ INSERT INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
 	(1, 'society_ambulance', 0, NULL),
 	(2, 'society_cardealer', 0, NULL),
 	(3, 'society_mechanic', 0, NULL),
-	(4, 'society_police', 0, NULL),
-	(5, 'property_black_money', 0, '52c9b03acdda09da2ae04368c997501876edb95d');
+	(4, 'society_police', 0, NULL);
 /*!40000 ALTER TABLE `addon_account_data` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `addon_inventory` (
@@ -131,12 +130,7 @@ CREATE TABLE IF NOT EXISTS `datastore_data` (
 INSERT INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
 	(1, 'society_ambulance', NULL, '{}'),
 	(2, 'society_mechanic', NULL, '{}'),
-	(3, 'society_police', NULL, '{}'),
-	(4, 'property', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
-	(5, 'user_glasses', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
-	(6, 'user_helmet', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
-	(7, 'user_ears', '52c9b03acdda09da2ae04368c997501876edb95d', '{}'),
-	(8, 'user_mask', '52c9b03acdda09da2ae04368c997501876edb95d', '{}');
+	(3, 'society_police', NULL, '{}');
 /*!40000 ALTER TABLE `datastore_data` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `fine_types` (
@@ -216,22 +210,38 @@ CREATE TABLE IF NOT EXISTS `items` (
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('bandage', 'Benda', 1, 0, 1),
 	('beer', 'Cerveza', 1, 0, 1),
+	('binoculars', 'Binoculares', 1, 0, 1),
 	('blowpipe', 'Soplete', 1, 0, 1),
 	('bolcacahuetes', 'Cacahuetes', 1, 0, 1),
+	('boxflare', 'Bengalas', 1, 0, 1),
+	('boxmg', 'Municion MG', 1, 0, 1),
+	('boxpistol', 'Municion de Pistola', 1, 0, 1),
+	('boxrifle', 'Municion de Rifle', 1, 0, 1),
+	('boxshot', 'Municion de Escopeta', 1, 0, 1),
+	('boxsmg', 'Municion de SMG', 1, 0, 1),
+	('boxsniper', 'Municion de Francotirador', 1, 0, 1),
 	('bread', 'Hamburguesa', 1, 0, 1),
+	('bulletproof', 'Chaleco AntiBalas', 1, 0, 1),
 	('cannabis', 'Canabis', 3, 0, 1),
 	('carokit', 'Kit de carroceria', 1, 0, 1),
 	('carotool', 'Herramientas de carroceria', 1, 0, 1),
 	('chips', 'Patatas', 1, 0, 1),
 	('coke', 'Cocaina', 1, 0, 1),
 	('coke_seed', 'Semilla de Coca', 1, 0, 1),
+	('darknet', 'Dark Net', 1, 0, 1),
+	('defib', 'Desfibrilador', 1, 0, 1),
+	('drill', 'Taladro', 1, 0, 1),
 	('drpepper', 'Dr. Pepper', 1, 0, 1),
 	('energy', 'Bebida Energetica', 1, 0, 1),
+	('firework', 'Fuegos Artificiales', 1, 0, 1),
+	('firstaidkit', 'Kit de Primeros Auxilios', 1, 0, 1),
 	('fish', 'Pescado', 1, 0, 1),
 	('fixkit', 'Kit de reparacion', 1, 0, 1),
 	('fixtool', 'Herramientas de reparacion', 1, 0, 1),
 	('gazbottle', 'Botella de gas', 1, 0, 1),
 	('grapperaisin', 'Racimo de Uvas', 1, 0, 1),
+	('handcuffkey', 'Llaves de esposas', 1, 0, 1),
+	('handcuffs', 'Esposas', 1, 0, 1),
 	('icetea', 'Te Helado', 1, 0, 1),
 	('jager', 'Jägermeister', 1, 0, 1),
 	('jagerbomb', 'Jägerbomb', 1, 0, 1),
@@ -240,6 +250,7 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('jusfruit', 'Zumo de frutas', 1, 0, 1),
 	('lait', 'Leche', 1, 0, 1),
 	('limonade', 'Limonada', 1, 0, 1),
+	('lockpick', 'Ganzua', 1, 0, 1),
 	('marijuana', 'Marihuana', 2, 0, 1),
 	('martini', 'Martini Blanco', 1, 0, 1),
 	('medikit', 'Kit Medico', 1, 0, 1),
@@ -248,18 +259,22 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('mojito', 'Mojito', 1, 0, 1),
 	('opium', 'Opio', 1, 0, 1),
 	('opium_seed', 'Semilla de Opio', 1, 0, 1),
-	('paincomplet', 'Pan', 1, 0, 1),
+	('oxygenmask', 'Mascara de Oxigeno', 1, 0, 1),
 	('phone', 'Telefono', 1, 0, 1),
 	('pistache', 'Pistachos', 1, 0, 1),
+	('repairkit', 'Kit de Reparacion', 1, 0, 1),
 	('rhum', 'Ron', 1, 0, 1),
 	('rhumcoca', 'Ron-cola', 1, 0, 1),
 	('rhumfruit', 'Ron-zumo', 1, 0, 1),
 	('soda', 'Gaseosa', 1, 0, 1),
 	('tequila', 'Tequila', 1, 0, 1),
+	('tirekit', 'Kit de llantas', 1, 0, 1),
+	('vehgps', 'GPS', 1, 0, 1),
 	('vodka', 'Vodka', 1, 0, 1),
 	('vodkaenergy', 'Vodka-energy', 1, 0, 1),
 	('vodkafruit', 'Vodka-zumo', 1, 0, 1),
 	('water', 'Agua', 1, 0, 1),
+	('weakit', 'Weapon Kit', 1, 0, 1),
 	('whisky', 'Whisky', 1, 0, 1),
 	('whiskycoca', 'Whisky-cola', 1, 0, 1),
 	('xanax', 'Xanax', 1, 0, 1);
@@ -343,6 +358,10 @@ CREATE TABLE IF NOT EXISTS `licenses` (
 
 /*!40000 ALTER TABLE `licenses` DISABLE KEYS */;
 INSERT INTO `licenses` (`type`, `label`) VALUES
+	('dmv', 'Permiso teórico de conducir'),
+	('drive', 'Permiso de conducir de coche'),
+	('drive_bike', 'Permiso de conducir de moto'),
+	('drive_truck', 'Permiso de conducir de camión'),
 	('weed_processing', 'Weed Processing License');
 /*!40000 ALTER TABLE `licenses` ENABLE KEYS */;
 
@@ -607,7 +626,7 @@ CREATE TABLE IF NOT EXISTS `user_identifiers` (
   `ip` varchar(255) DEFAULT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 /*!40000 ALTER TABLE `user_identifiers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_identifiers` ENABLE KEYS */;
