@@ -36,8 +36,7 @@ if Config.ObjectDropLoot then
 
 		            if IsControlJustReleased(0, 38) then
 						if not objects[obj] then
-							
-							exports.esx_xp:ESXP_Add(100)	
+								
 
 		                    SetCurrentPedWeapon(GetPlayerPed(-1), 0xA2719263, true)
 		                    RequestAnimDict("anim@amb@clubhouse@tutorial@bkr_tut_ig3@")

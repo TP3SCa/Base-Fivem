@@ -9,15 +9,17 @@ Citizen.CreateThread(function()
 	end
 
 	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
+		Citizen.Wait(100)
 	end
 
+	PlayerLoaded = true
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerData = xPlayer
+	PlayerLoaded = true
 end)
 
 RegisterNetEvent('esx:setJob')
@@ -246,13 +248,12 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
-		local trabajo = ESX.PlayerData.job.name == 'bahamas'
-		if trabajo and GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), -1392.19, -611.92, 30.32, true) <= 1 then
+		if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), -1392.19, -611.92, 30.32, true) <= 1 and ESX.PlayerData.job.name == 'bahamas' then
 			ESX.ShowHelpNotification('Presiona ~y~E~w~ para acceder al menu')
 		end
-		if trabajo then
+		if ESX.PlayerData.job.name == 'bahamas' then
 			DrawMarker(1, -1392.19, -611.92, 27.30 + 2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.3, 1.3, 0.5, 8, 0, 255, 100, false, true, 2, nil, nil, false)
-			if IsControlJustReleased(0, 38) and GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), -1392.19, -611.92, 30.32, true) <= 2 then
+			if IsControlJustReleased(0, 38) and GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), -1392.19, -611.92, 30.32, true) <= 2 and ESX.PlayerData.job.name == 'bahamas' then
 				BarmanMenu()
 			end
 		end
